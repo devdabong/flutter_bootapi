@@ -5,3 +5,16 @@
   Hello bootapi!
   </body>
 </html>
+
+<script>
+  let user = "${user}";
+  let userId = "${user.userId}";
+  let userName = "${user.userName}";
+  let userEmail = "${user.userEmail}";
+  let userPassword = "${user.userPassword}";
+  console.log(user);
+  console.log(userId);
+  console.log(userName);
+  console.log(userEmail);
+  console.log(userPassword);
+</script>

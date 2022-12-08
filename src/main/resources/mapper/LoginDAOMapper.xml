@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dabong.bootapi.login.dao.LoginDAO">
+    <select id="selectUser" parameterType="UserVO" resultType="UserVO">
+        SELECT *
+          FROM TB_USER
+         WHERE USER_NAME = #{userName}
+    </select>
+</mapper>

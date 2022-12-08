@@ -18,19 +18,4 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
 	}
 
-
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-//		registry.addInterceptor(new ControllerInterceptor())
-//		.excludePathPatterns("/js/**", "/css/**", "/fonts/**", "/images/**");
-	}
-
-//	@Bean
-//	public MessageSource messageSource() throws Exception {
-//		CustomReloadableResourceBundleMessageSource message = new CustomReloadableResourceBundleMessageSource();
-//		message.setDefaultEncoding("UTF-8");
-//		message.setCacheSeconds(60);
-//		message.setBasename("classpath:/message/message");
-//		return message;
-//	}
 }
