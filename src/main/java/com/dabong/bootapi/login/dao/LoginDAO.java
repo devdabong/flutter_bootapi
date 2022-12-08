@@ -8,4 +8,7 @@ public interface LoginDAO {
 
     public UserVO selectUser(UserVO vo) throws Exception;
 
+    public int selectUserCount(UserVO vo) throws Exception;
+
+    public int insertUser(UserVO vo) throws Exception;
 }

@@ -7,4 +7,25 @@
           FROM TB_USER
          WHERE USER_NAME = #{userName}
     </select>
+
+    <select id="selectUserCount" parameterType="UserVO" resultType="int">
+        SELECT count(1)
+        FROM TB_USER
+        WHERE USER_EMAIL = #{userEmail}
+    </select>
+
+    <insert id="insertUser" parameterType="UserVO">
+        INSERT INTO TB_USER
+        (
+            USER_NAME,
+            USER_EMAIL,
+            USER_PASSWORD
+        ) VALUES
+        (
+            #{userName},
+            #{userEmail},
+            #{userPassword}
+        )
+
+    </insert>
 </mapper>

@@ -8,10 +8,18 @@ import org.apache.catalina.User;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 //크롬 확장 프로그램 => Talend API Tester - Free Edition 으로 API 테스트 진행.
 /**
@@ -86,5 +94,27 @@ public class LoginController {
         UserVO user = loginService.selectUser(vo);
 
         return user;
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<Map<String,Object>> signup(UserVO vo) throws Exception {
+        log.info("sign up");
+        int success = loginService.insertUser(vo);
+
+        Map<String, Object> result = new HashMap<>();
+        result.put("success", success);
+        return ResponseEntity.ok().body(result);
+    }
+
+    @PostMapping("/validate_email")
+//    public ResponseEntity<Object> validateEmail(UserVO vo) throws Exception {
+    public ResponseEntity<Map<String,Object>> validateEmail(UserVO vo) throws Exception {
+        log.info("validateEmail");
+        int isExist = loginService.selectUserCount(vo);
+
+        //return ResponseEntity.ok().body(isExist);
+        Map<String, Object> result = new HashMap<>();
+        result.put("existEmail", isExist);
+        return ResponseEntity.ok().body(result);
     }
 }

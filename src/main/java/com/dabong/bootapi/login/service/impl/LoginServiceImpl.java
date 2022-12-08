@@ -17,4 +17,14 @@ public class LoginServiceImpl implements LoginService {
         return loginDAO.selectUser(vo);
     }
 
+    @Override
+    public int selectUserCount(UserVO vo) throws Exception {
+        return loginDAO.selectUserCount(vo);
+    }
+
+    @Override
+    public int insertUser(UserVO vo) throws Exception {
+        return loginDAO.insertUser(vo);
+    }
+
 }
