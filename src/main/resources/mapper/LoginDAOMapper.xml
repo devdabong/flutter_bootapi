@@ -3,7 +3,10 @@
 
 <mapper namespace="com.dabong.bootapi.login.dao.LoginDAO">
     <select id="selectUser" parameterType="UserVO" resultType="UserVO">
-        SELECT *
+        SELECT USER_ID,
+               USER_NAME,
+               USER_EMAIL,
+               FN_CRYPTO('DEC', USER_PASSWORD)
           FROM TB_USER
          WHERE USER_NAME = #{userName}
     </select>
@@ -24,8 +27,7 @@
         (
             #{userName},
             #{userEmail},
-            #{userPassword}
+            FN_CRYPTO('ENC', #{userPassword})
         )
-
     </insert>
 </mapper>
